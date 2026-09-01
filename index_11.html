@@ -1,0 +1,446 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Daniel Hayes — Performance Marketing</title>
+<meta name="description" content="Freelance performance marketing specialist managing $2.5M+ in average monthly aggregate spend across Google, Meta, TikTok, and more — for DTC, QSR, B2B, and B2C service brands.">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@400;500;600;700&family=Inter:wght@400;500;600;700&family=IBM+Plex+Mono:wght@400;500;600&display=swap" rel="stylesheet">
+<style>
+  :root{
+    --ink:#20242B;
+    --paper:#F4F3F0;
+    --paper-alt:#EAE8E3;
+    --paper-card:#FFFFFF;
+    --line:#DDD9D2;
+    --green:#2E5C8A;
+    --green-dark:#1F4265;
+    --green-tint:#E4ECF3;
+    --gold:#C98A2B;
+    --gold-tint:#F7EAD3;
+    --slate:#5B6168;
+    --mono:'IBM Plex Mono', ui-monospace, monospace;
+    --display:'Space Grotesk', sans-serif;
+    --body:'Inter', sans-serif;
+    --maxw:1120px;
+  }
+
+  *,*::before,*::after{box-sizing:border-box;}
+  html{scroll-behavior:smooth;}
+  @media (prefers-reduced-motion: reduce){
+    html{scroll-behavior:auto;}
+    *,*::before,*::after{animation-duration:0.001ms !important; animation-iteration-count:1 !important; transition-duration:0.001ms !important;}
+  }
+
+  body{
+    margin:0;
+    background:var(--paper);
+    color:var(--ink);
+    font-family:var(--body);
+    font-size:16px;
+    line-height:1.55;
+    -webkit-font-smoothing:antialiased;
+  }
+
+  img{max-width:100%;display:block;}
+  a{color:inherit;}
+
+  .wrap{max-width:var(--maxw); margin:0 auto; padding:0 28px;}
+
+  h1,h2,h3{font-family:var(--display); margin:0; letter-spacing:-0.01em;}
+
+  .eyebrow{
+    font-family:var(--mono);
+    font-size:12.5px;
+    letter-spacing:0.14em;
+    text-transform:uppercase;
+    color:var(--green);
+    display:flex;
+    align-items:center;
+    gap:10px;
+    margin:0 0 18px;
+  }
+  .eyebrow::before{
+    content:"";
+    width:22px; height:1px;
+    background:var(--green);
+    display:inline-block;
+  }
+
+  .btn{
+    font-family:var(--mono);
+    font-size:13.5px;
+    letter-spacing:0.02em;
+    text-decoration:none;
+    display:inline-flex;
+    align-items:center;
+    gap:8px;
+    padding:13px 22px;
+    border-radius:2px;
+    border:1px solid var(--ink);
+    transition:transform .15s ease, background .15s ease, color .15s ease;
+    white-space:nowrap;
+  }
+  .btn--primary{ background:var(--ink); color:var(--paper); }
+  .btn--primary:hover{ background:var(--green-dark); border-color:var(--green-dark); transform:translateY(-1px); }
+  .btn--ghost{ background:transparent; color:var(--ink); }
+  .btn--ghost:hover{ background:var(--ink); color:var(--paper); transform:translateY(-1px); }
+
+  mark.ph{
+    background:var(--gold-tint);
+    color:var(--ink);
+    border-bottom:1.5px dashed var(--gold);
+    padding:0 3px;
+    font-family:var(--mono);
+    font-weight:600;
+  }
+
+  /* ---------- NAV ---------- */
+  .nav{
+    position:sticky; top:0; z-index:50;
+    background:rgba(241,243,238,0.86);
+    backdrop-filter:blur(8px);
+    border-bottom:1px solid var(--line);
+  }
+  .nav .wrap{
+    display:flex; align-items:center; justify-content:space-between;
+    height:72px;
+  }
+  .nav__mark{
+    font-family:var(--mono); font-weight:600; font-size:15px;
+    letter-spacing:0.04em; text-decoration:none; color:var(--ink);
+    display:flex; align-items:center; gap:9px;
+  }
+  .nav__mark span.dot{
+    width:8px; height:8px; background:var(--green); display:inline-block; border-radius:50%;
+  }
+  .nav__links{
+    display:flex; align-items:center; gap:34px;
+    font-family:var(--mono); font-size:13px; letter-spacing:0.03em;
+  }
+  .nav__links a{ text-decoration:none; opacity:0.75; transition:opacity .15s; }
+  .nav__links a:hover{ opacity:1; }
+  .nav__cta{ display:flex; align-items:center; gap:20px; }
+  .nav__toggle{ display:none; background:none; border:1px solid var(--ink); border-radius:2px; width:40px; height:40px; align-items:center; justify-content:center; cursor:pointer; }
+  .nav__toggle span, .nav__toggle span::before, .nav__toggle span::after{
+    content:""; display:block; width:18px; height:1.5px; background:var(--ink); position:relative;
+  }
+  .nav__toggle span::before{ position:absolute; top:-6px; }
+  .nav__toggle span::after{ position:absolute; top:6px; }
+
+  @media (max-width: 860px){
+    .nav__links{
+      position:absolute; top:72px; left:0; right:0;
+      background:var(--paper); border-bottom:1px solid var(--line);
+      flex-direction:column; align-items:flex-start; gap:0;
+      max-height:0; overflow:hidden; transition:max-height .25s ease;
+    }
+    .nav__links.open{ max-height:280px; }
+    .nav__links a{ padding:16px 28px; width:100%; opacity:1; border-bottom:1px solid var(--line); }
+    .nav__cta .btn--ghost{ display:none; }
+    .nav__toggle{ display:flex; }
+  }
+
+  /* ---------- HERO ---------- */
+  .hero{
+    padding:88px 0 100px;
+    background-image:
+      linear-gradient(var(--paper) 0, var(--paper) 100%),
+      repeating-linear-gradient(180deg, transparent 0 39px, var(--line) 39px 40px);
+    background-blend-mode:normal;
+    position:relative;
+    overflow:hidden;
+  }
+  .hero .wrap{
+    display:block;
+    max-width:720px;
+  }
+  .hero__title{
+    font-size:clamp(34px, 4.6vw, 54px);
+    line-height:1.08;
+    font-weight:600;
+  }
+  .hero__title em{
+    font-style:normal; color:var(--green);
+  }
+  .hero__sub{
+    margin:22px 0 34px;
+    max-width:46ch;
+    color:var(--slate);
+    font-size:17px;
+  }
+  .hero__ctas{ display:flex; gap:14px; flex-wrap:wrap; }
+  .hero__meta{
+    margin-top:38px;
+    display:flex; gap:26px; flex-wrap:wrap;
+    font-family:var(--mono); font-size:12.5px; color:var(--slate);
+  }
+  .hero__meta b{ color:var(--ink); }
+
+  .fade-in{
+    animation:fadeUp .7s ease both;
+  }
+  @keyframes fadeUp{
+    from{ opacity:0; transform:translateY(10px); }
+    to{ opacity:1; transform:translateY(0); }
+  }
+  .d1{animation-delay:.05s} .d2{animation-delay:.25s} .d3{animation-delay:.45s} .d4{animation-delay:.6s} .d5{animation-delay:.75s}
+
+  /* ---------- SECTION SHELL ---------- */
+  section{ padding:96px 0; }
+  section.alt{ background:var(--paper-alt); border-top:1px solid var(--line); border-bottom:1px solid var(--line); }
+  .section__head{ max-width:640px; margin-bottom:52px; }
+  .section__head h2{ font-size:clamp(26px,3vw,36px); font-weight:600; }
+  .section__head p{ color:var(--slate); margin-top:14px; font-size:16px; }
+
+  /* reveal-on-scroll */
+  .reveal{ opacity:0; transform:translateY(16px); transition:opacity .6s ease, transform .6s ease; }
+  .reveal.is-visible{ opacity:1; transform:translateY(0); }
+
+  /* ---------- WORK / CASE STUDIES ---------- */
+  .work__grid{ display:grid; grid-template-columns:repeat(3,1fr); gap:24px; }
+  @media (max-width:900px){ .work__grid{ grid-template-columns:1fr; } }
+
+  .ticket{
+    background:var(--paper-card);
+    border:1px solid var(--line);
+    border-radius:4px;
+    padding:26px 24px 22px;
+    position:relative;
+  }
+  .ticket::before{
+    content:"";
+    position:absolute; left:0; right:0; top:64px;
+    height:1px;
+    background-image:repeating-linear-gradient(90deg, var(--line) 0 6px, transparent 6px 12px);
+  }
+  .ticket__tag{ font-family:var(--mono); font-size:11px; color:var(--green); letter-spacing:0.06em; text-transform:uppercase; }
+  .ticket__title{ font-family:var(--display); font-weight:600; font-size:18.5px; margin:8px 0 22px; line-height:1.3; }
+  .ticket__row{
+    display:flex; justify-content:space-between; gap:14px;
+    font-size:14px; padding:10px 0;
+    border-bottom:1px dashed var(--line);
+  }
+  .ticket__row:last-of-type{ border-bottom:none; }
+  .ticket__row .k{ color:var(--slate); }
+  .ticket__row .v{ font-family:var(--mono); font-size:13.5px; text-align:right; font-weight:600; }
+  .ticket__note{
+    margin-top:18px; font-size:13px; color:var(--slate); font-style:italic;
+  }
+  .work__note{
+    margin-top:28px; font-size:13.5px; color:var(--slate);
+    font-family:var(--mono); border-left:2px solid var(--gold); padding-left:14px;
+  }
+
+  /* ---------- APPROACH ---------- */
+  .approach__list{ display:flex; flex-direction:column; }
+  .step{
+    display:grid;
+    grid-template-columns:64px 1fr;
+    gap:24px;
+    padding:30px 0;
+    border-top:1px solid var(--line);
+  }
+  .step:last-child{ border-bottom:1px solid var(--line); }
+  .step__num{ font-family:var(--mono); font-size:14px; color:var(--green); padding-top:3px; }
+  .step h3{ font-size:19px; font-weight:600; margin-bottom:8px; }
+  .step p{ color:var(--slate); margin:0; max-width:60ch; }
+
+  .fit{
+    margin-top:56px; display:grid; grid-template-columns:1fr 1fr; gap:40px;
+  }
+  @media (max-width:760px){ .fit{ grid-template-columns:1fr; } }
+  .fit h3{ font-size:15px; font-family:var(--mono); text-transform:uppercase; letter-spacing:0.06em; margin-bottom:16px; color:var(--slate); }
+  .fit ul{ margin:0; padding:0; list-style:none; }
+  .fit li{ padding:10px 0 10px 22px; border-top:1px solid var(--line); position:relative; font-size:15px; }
+  .fit li:first-child{ border-top:none; }
+  .fit li::before{ content:"—"; position:absolute; left:0; color:var(--green); }
+
+  /* ---------- ABOUT ---------- */
+  .about{ display:grid; grid-template-columns:0.9fr 1.1fr; gap:56px; align-items:start; }
+  @media (max-width:860px){ .about{ grid-template-columns:1fr; } }
+  .about__card{
+    background:var(--paper-card); border:1px solid var(--line); border-radius:4px; padding:26px;
+  }
+  .about__card .row{ display:flex; justify-content:space-between; padding:11px 0; border-bottom:1px solid var(--line); font-size:13.5px; }
+  .about__card .row:last-child{ border-bottom:none; }
+  .about__card .row .k{ font-family:var(--mono); color:var(--slate); }
+  .about__card .row .v{ font-weight:600; text-align:right; }
+  .about p{ font-size:16.5px; }
+  .about p + p{ margin-top:16px; }
+
+  /* ---------- CONTACT ---------- */
+  .contact{ text-align:center; padding:108px 0; }
+  .contact h2{ font-size:clamp(30px,4.4vw,48px); font-weight:600; max-width:16ch; margin:0 auto; }
+  .contact p{ color:var(--slate); max-width:52ch; margin:20px auto 36px; font-size:17px; }
+  .contact__ctas{ display:flex; justify-content:center; gap:16px; flex-wrap:wrap; }
+
+  footer{ border-top:1px solid var(--line); padding:26px 0; }
+  footer .wrap{ display:flex; justify-content:space-between; align-items:center; flex-wrap:wrap; gap:12px; }
+  footer{ font-family:var(--mono); font-size:12px; color:var(--slate); }
+  footer a{ text-decoration:none; }
+  footer a:hover{ color:var(--ink); }
+</style>
+</head>
+<body>
+
+<nav class="nav">
+  <div class="wrap">
+    <a href="#top" class="nav__mark"><span class="dot"></span>DANIEL HAYES</a>
+    <div class="nav__links" id="navLinks">
+      <a href="#work">Work</a>
+      <a href="#approach">Approach</a>
+      <a href="#about">About</a>
+    </div>
+    <div class="nav__cta">
+      <button class="nav__toggle" id="navToggle" aria-label="Toggle menu"><span></span></button>
+    </div>
+  </div>
+</nav>
+
+<header class="hero" id="top">
+  <div class="wrap">
+    <div class="hero__copy">
+      <p class="eyebrow fade-in d1">Performance marketing — DTC, QSR, B2B &amp; B2C service</p>
+      <h1 class="hero__title fade-in d2">Performance marketing across every paid channel.</h1>
+      <p class="hero__sub fade-in d3">Managing $2.5M+ in average monthly aggregate spend across Google and Meta, with active campaigns on TikTok, Microsoft Advertising, Reddit, and Google Local Services Ads — for DTC, QSR, B2B, and B2C service brands. Strategy that is anchored in real business outcomes, not vanity metrics.</p>
+      <div class="hero__ctas fade-in d4">
+        <a href="#work" class="btn btn--ghost">See recent results</a>
+      </div>
+      <div class="hero__meta fade-in d5">
+        <span><b>Managing:</b> $2.5M+ average monthly spend</span>
+        <span><b>Channels:</b> Google · Meta · TikTok · Microsoft · Reddit · LSA</span>
+        <span><b>Verticals:</b> DTC · QSR · B2B · B2C service</span>
+        <span><b>Based:</b> Austin, TX · works remote</span>
+      </div>
+    </div>
+
+
+  </div>
+</header>
+
+<section id="work">
+  <div class="wrap">
+    <div class="section__head reveal">
+      <p class="eyebrow">Selected results</p>
+      <h2>Results, not just impressions.</h2>
+      <p>A few representative engagements. Client names are withheld by design — the practice spans more verticals and channels than are detailed below.</p>
+    </div>
+
+    <div class="work__grid">
+      <article class="ticket reveal">
+        <p class="ticket__tag">DTC pet brand · creative diagnosis</p>
+        <h3 class="ticket__title">A media problem that was actually a creative problem</h3>
+        <div class="ticket__row"><span class="k">Engagement rate</span><span class="v">-56% YoY → +40%+ post-fix</span></div>
+        <div class="ticket__row"><span class="k">Cost per purchase</span><span class="v">+48% YoY → -32% post-fix</span></div>
+        <div class="ticket__row"><span class="k">Root cause</span><span class="v">top format's spend share fell to 48%</span></div>
+        <p class="ticket__note">CVR barely moved YoY — proof the algorithm was still finding the right people. What collapsed was engagement, traced back to a shrinking share of spend behind the video format that had always driven it. The following year, budget shifted back into that winning creative: engagement improved by over 40%, and cost per purchase dropped 32% YoY.</p>
+      </article>
+
+      <article class="ticket reveal">
+        <p class="ticket__tag">B2B SaaS · Search &amp; LinkedIn</p>
+        <h3 class="ticket__title">Taking over a stalled B2B pipeline across search and LinkedIn</h3>
+        <div class="ticket__row"><span class="k">LinkedIn lead volume</span><span class="v">+642% since takeover</span></div>
+        <div class="ticket__row"><span class="k">SQO volume</span><span class="v">+55% at 53% lower cost</span></div>
+        <div class="ticket__row"><span class="k">Branded CPCs</span><span class="v">-40% since takeover</span></div>
+        <p class="ticket__note">Standard last-touch reporting made search look like it was declining. Switching to first-touch attribution told a different story — paid search was driving more, cheaper pipeline; it just wasn't getting credit for starting the journey. Meanwhile, a LinkedIn rebuild — new ad formats, mid- and bottom-funnel testing — drove lead volume up sharply on the same account.</p>
+      </article>
+
+      <article class="ticket reveal">
+        <p class="ticket__tag">QSR · YouTube &amp; Demand Gen</p>
+        <h3 class="ticket__title">Proving lift on a modest YouTube-only budget</h3>
+        <div class="ticket__row"><span class="k">ROAS</span><span class="v">2x within the month after flight</span></div>
+        <div class="ticket__row"><span class="k">Search lift</span><span class="v">62% relative, ≥90% confidence</span></div>
+        <div class="ticket__row"><span class="k">Ad recall lift</span><span class="v">up to 13pts above benchmark</span></div>
+        <p class="ticket__note">A $60K YouTube-only flight — Demand Gen video plus YouTube Select — built to prove brand and search lift on a modest budget, then converted into a real ROAS gain the month after it ended. Lift held even in smaller, lower-density markets.</p>
+      </article>
+    </div>
+
+  </div>
+</section>
+
+<section id="approach" class="alt">
+  <div class="wrap">
+    <div class="section__head reveal">
+      <p class="eyebrow">How I work</p>
+      <h2>A repeatable process, whatever the channel.</h2>
+      <p>Four stages, in order — each one exists because skipping it is where most accounts lose money.</p>
+    </div>
+
+    <div class="approach__list">
+      <div class="step reveal">
+        <div class="step__num">01</div>
+        <div>
+          <h3>Audit</h3>
+          <p>Account structure, creative or copy fatigue, and tracking integrity — across Meta, Google, and your CRM or ESP — finding where budget leaks before optimization even starts.</p>
+        </div>
+      </div>
+      <div class="step reveal">
+        <div class="step__num">02</div>
+        <div>
+          <h3>Architecture</h3>
+          <p>Consolidated campaign structures built to clear each platform's learning phase quickly — Advantage+ on Meta, tightly-themed Search or Performance Max on Google, and the equivalent on TikTok, Microsoft, or Reddit — instead of fragmenting signal across audiences or keywords.</p>
+        </div>
+      </div>
+      <div class="step reveal">
+        <div class="step__num">03</div>
+        <div>
+          <h3>Creative recommendations</h3>
+          <p>Performance gets broken down by angle, format, and message — not just by campaign — to show which creative direction is actually working. CTR, CPM, and engagement are the leading indicators; they show what's working days before CVR or CPA does. Those findings turn into specific, prioritized recommendations for your team or creative partner. Production stays with you — the read on what's working, and what to make more of, is mine.</p>
+        </div>
+      </div>
+      <div class="step reveal">
+        <div class="step__num">04</div>
+        <div>
+          <h3>Scale</h3>
+          <p>Budget decisions get tied to the metric that actually matters for that account — not a one-size-fits-all target, and not surface-level ROAS or CPL in isolation.</p>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<section id="about">
+  <div class="wrap about">
+    <div class="reveal">
+      <p class="eyebrow">About</p>
+      <h2 style="margin-bottom:20px; font-size:clamp(24px,3vw,32px);">Daniel Hayes</h2>
+      <p>I am a freelance performance marketing specialist managing <strong>$2.5M+</strong> in average monthly aggregate spend across Google and Meta, with active campaigns on TikTok, Microsoft Advertising, Reddit, and Google Local Services Ads — for DTC, QSR, B2B, and B2C service brands.</p>
+      <p>Each account gets built around the structure it actually needs, on whatever platform it lives on — matched to the metric that business is actually trying to move.</p>
+      <p>No agency layers, no junior hand-offs. You work directly with the person running the account.</p>
+    </div>
+    <div class="reveal about__card">
+      <div class="row"><span class="k">Core focus</span><span class="v">DTC, QSR, B2B &amp; B2C service</span></div>
+      <div class="row"><span class="k">Ad platforms</span><span class="v">Google · Meta · TikTok · Microsoft · Reddit · LSA</span></div>
+      <div class="row"><span class="k">Aggregate spend</span><span class="v">$2.5M+ monthly average</span></div>
+      <div class="row"><span class="k">Engagement style</span><span class="v">Direct, no account hand-offs</span></div>
+      <div class="row"><span class="k">Availability</span><span class="v"><mark class="ph">[Open / Limited]</mark> for new clients</span></div>
+    </div>
+  </div>
+</section>
+
+<footer>
+  <div class="wrap">
+    <span>© 2026 Daniel Hayes — Performance Marketing</span>
+    <span><a href="#top">Back to top ↑</a></span>
+  </div>
+</footer>
+
+<script>
+  // Mobile nav toggle
+  const navToggle = document.getElementById('navToggle');
+  const navLinks = document.getElementById('navLinks');
+  navToggle.addEventListener('click', () => navLinks.classList.toggle('open'));
+  navLinks.querySelectorAll('a').forEach(a => a.addEventListener('click', () => navLinks.classList.remove('open')));
+
+  // Scroll reveal
+  const io = new IntersectionObserver((entries) => {
+    entries.forEach(e => { if(e.isIntersecting){ e.target.classList.add('is-visible'); io.unobserve(e.target); } });
+  }, { threshold: 0.12 });
+  document.querySelectorAll('.reveal').forEach(el => io.observe(el));
+</script>
+
+</body>
+</html>
